@@ -17,11 +17,11 @@ trait Validates
     abstract protected function getRules() : array;
 
     /**
-     * Returns a list of attributes to validate.
+     * Returns the data to validate.
      *
      * @return array
      */
-    abstract protected function getAttributes();
+    abstract protected function getData() : array;
 
     /**
      * Returns a list of validation message overrides.
@@ -52,7 +52,7 @@ trait Validates
     private function getValidator() : Validator
     {
         return $this->getValidationFactory()->make(
-            $this->getAttributes(),
+            $this->getData(),
             $this->getRules(),
             $this->getMessages()
         );
