@@ -4,6 +4,7 @@ namespace Tests;
 
 use Tests\Doubles\Model;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
+use Jaspaul\EloquentModelValidation\Contracts\Validatable;
 
 class ModelTest extends TestCase
 {
@@ -11,5 +12,6 @@ class ModelTest extends TestCase
     {
         $model = new Model();
         $this->assertInstanceOf(EloquentModel::class, $model);
+        $this->assertInstanceOf(Validatable::class, $model);
     }
 }
