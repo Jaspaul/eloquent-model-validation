@@ -5,6 +5,7 @@ namespace Jaspaul\EloquentModelValidation\Traits;
 use Illuminate\Validation\Factory;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Contracts\Support\MessageProvider;
 
 trait Validates
@@ -88,5 +89,25 @@ trait Validates
     public function getErrors() : MessageProvider
     {
         return $this->getValidator()->getMessageBag();
+    }
+
+    /**
+     * Save the model to the database.
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     *         Thrown with errors if the model is invalid.
+     *
+     * @param array $options
+     *        Any additional actions you may want to perform after the save.
+     *
+     * @return bool
+     */
+    public function save(array $options = [])
+    {
+        if ($this->isInvalid()) {
+            throw new ValidationException($this->getErrors());
+        }
+
+        return parent::save($options);
     }
 }
