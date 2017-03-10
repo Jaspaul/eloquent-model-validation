@@ -20,4 +20,11 @@ class ModelTest extends TestCase
         $model = new ValidModel();
         $this->assertTrue($model->isValid());
     }
+
+    public function testGetErrorsReturnsAnEmptyMessageBag()
+    {
+        $model = new ValidModel();
+        $errors = $model->getErrors();
+        $this->assertTrue($errors->isEmpty());
+    }
 }

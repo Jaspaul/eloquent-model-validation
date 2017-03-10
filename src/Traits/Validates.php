@@ -4,6 +4,8 @@ namespace Jaspaul\EloquentModelValidation\Traits;
 
 use Illuminate\Validation\Factory;
 use Illuminate\Container\Container;
+use Illuminate\Contracts\Support\MessageBag;
+use Illuminate\Contracts\Validation\Validator;
 
 trait Validates
 {
@@ -36,10 +38,24 @@ trait Validates
      *
      * @return \Illuminate\Validation\Factory
      */
-    protected function getValidationFactory() : Factory
+    private function getValidationFactory() : Factory
     {
         $container = Container::getInstance();
         return $container->make('validator');
+    }
+
+    /**
+     * Returns a validator pre-populated with our attributes, rules, and custom messages.
+     *
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    private function getValidator() : Validator
+    {
+        return $this->getValidationFactory()->make(
+            $this->getAttributes(),
+            $this->getRules(),
+            $this->getMessages()
+        );
     }
 
     /**
@@ -61,11 +77,16 @@ trait Validates
      */
     public function isInvalid() : bool
     {
-        $validator = $this->getValidationFactory()->make(
-            $this->getAttributes(),
-            $this->getRules(),
-            $this->getMessages()
-        );
-        return $validator->fails();
+        return $this->getValidator()->fails();
+    }
+
+    /**
+     * Returns a Message Bag containing the errors for the model validation.
+     *
+     * @return \Illuminate\Contracts\Support\MessageBag
+     */
+    public function getErrors() : MessageBag
+    {
+        return $this->getValidator()->getMessageBag();
     }
 }

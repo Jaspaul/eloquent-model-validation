@@ -20,4 +20,13 @@ class InvalidModelTest extends TestCase
         $model = new InvalidModel();
         $this->assertTrue($model->isInvalid());
     }
+
+    public function testGetErrorsReturnsAMessageBagWithTheEmailKey()
+    {
+        $model = new InvalidModel();
+        $errors = $model->getErrors();
+
+        $this->assertFalse($errors->isEmpty());
+        $this->assertTrue($errors->has('email'));
+    }
 }
