@@ -2,7 +2,7 @@
 
 namespace Jaspaul\EloquentModelValidation\Contracts;
 
-use Illuminate\Contracts\Support\MessageBag;
+use Illuminate\Contracts\Support\MessageProvider;
 
 interface Validatable
 {
@@ -23,9 +23,9 @@ interface Validatable
     public function isInvalid() : bool;
 
     /**
-     * Returns a Message Bag containing the errors for the model validation.
+     * Returns a Message Provider containing the errors for the model validation.
      *
-     * @return \Illuminate\Contracts\Support\MessageBag
+     * @return \Illuminate\Contracts\Support\MessageProvider
      */
-    public function getErrors() : MessageBag;
+    public function getErrors() : MessageProvider;
 }
