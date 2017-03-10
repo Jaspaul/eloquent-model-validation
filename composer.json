@@ -1,0 +1,34 @@
+{
+    "name": "jaspaul/eloquent-model-validation",
+    "description": "A simple package that provides a venue for model validation in Laravel.\"",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jaspaul Bola",
+            "email": "jaspaul.b@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "illuminate/support": "^5.4",
+        "illuminate/database": "^5.4",
+        "illuminate/validation": "^5.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.0",
+        "mockery/mockery": "^0.9.9",
+        "squizlabs/php_codesniffer": "^2.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jaspaul\\EloquentModelValidation": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable"
+}
