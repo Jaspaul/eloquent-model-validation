@@ -1,6 +1,6 @@
 {
     "name": "jaspaul/eloquent-model-validation",
-    "description": "A simple package that provides a venue for model validation in Laravel.\"",
+    "description": "A simple package that provides a venue for model validation in Laravel.",
     "type": "library",
     "license": "MIT",
     "authors": [
