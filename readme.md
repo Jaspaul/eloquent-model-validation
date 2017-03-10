@@ -39,8 +39,7 @@ class Foo extends Model
 Override `Eloquent` in `config/app.php`
 
 ```php
-'Eloquent' =>
-Jaspaul\EloquentModelValidation\Model::class,
+'Eloquent' => Jaspaul\EloquentModelValidation\Model::class,
 ```
 
 Now you can just do the following:
