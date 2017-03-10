@@ -2,7 +2,12 @@
 
 namespace Tests;
 
+use PDO;
+use Mockery;
+use PDOStatement;
 use Tests\Doubles\InvalidModel;
+use Illuminate\Database\SQLiteConnection;
+use Illuminate\Database\ConnectionResolverInterface;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Jaspaul\EloquentModelValidation\Contracts\Validatable;
 
@@ -28,5 +33,14 @@ class InvalidModelTest extends TestCase
 
         $this->assertFalse($errors->isEmpty());
         $this->assertTrue($errors->has('email'));
+    }
+
+    /**
+     * @expectedException \Illuminate\Validation\ValidationException
+     */
+    public function testSaveThrowsAValidationException()
+    {
+        $model = new InvalidModel();
+        $model->save();
     }
 }

@@ -22,17 +22,22 @@ abstract class Model extends Base implements Validatable
     }
 
     /**
-     * Before saving validate our model. If it fails throw an exception.
+     * Save the model to the database.
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     *         Thrown with errors if the model is invalid.
+     *
+     * @param array $options
+     *        Any additional actions you may want to perform after the save.
+     *
+     * @return bool
      */
-    protected static function boot()
+    public function save(array $options = [])
     {
-        parent::boot();
+        if ($this->isInvalid()) {
+            throw new ValidationException($this->getErrors());
+        }
 
-        static::saving(function($model)
-        {
-            if ($model->isInvalid()) {
-                throw new ValidationException($model->getErrors());
-            }
-        });
+        return parent::save($options);
     }
 }
