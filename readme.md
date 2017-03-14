@@ -1,5 +1,10 @@
 # Eloquent Model Validation
 
+[![Build
+Status](https://travis-ci.org/Jaspaul/eloquent-model-validation.svg?branch=master)](https://travis-ci.org/Jaspaul/eloquent-model-validation)
+| [![Coverage
+Status](https://coveralls.io/repos/github/Jaspaul/eloquent-model-validation/badge.svg?branch=master)](https://coveralls.io/github/Jaspaul/eloquent-model-validation?branch=master)
+
 This package is an experiment in introducing the concept of [active record validations](http://guides.rubyonrails.org/active_record_validations.html) to Laravel.
 
 ## Install
