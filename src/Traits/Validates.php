@@ -82,6 +82,21 @@ trait Validates
     }
 
     /**
+     * Used to validate the model.
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     *         Thrown if the model is not valid.
+     *
+     * @return void
+     */
+    public function validate() : void
+    {
+        if ($this->isInvalid()) {
+            throw new ValidationException($this->getValidator());
+        }
+    }
+
+    /**
      * Returns a Message Provider containing the errors for the model validation.
      *
      * @return \Illuminate\Contracts\Support\MessageProvider
@@ -104,10 +119,7 @@ trait Validates
      */
     public function save(array $options = [])
     {
-        if ($this->isInvalid()) {
-            throw new ValidationException($this->getValidator());
-        }
-
+        $this->validate();
         return parent::save($options);
     }
 }
