@@ -43,4 +43,13 @@ class InvalidModelTest extends TestCase
         $model = new InvalidModel();
         $model->save();
     }
+
+    /**
+     * @expectedException \Illuminate\Validation\ValidationException
+     */
+    public function testValidateThrowsAValidationException()
+    {
+        $model = new InvalidModel();
+        $model->validate();
+    }
 }

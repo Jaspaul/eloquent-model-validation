@@ -6,7 +6,7 @@ use Tests\Doubles\ValidModel;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Jaspaul\EloquentModelValidation\Contracts\Validatable;
 
-class ModelTest extends TestCase
+class ValidModelTest extends TestCase
 {
     public function testItCanBeConstructed()
     {
@@ -26,5 +26,11 @@ class ModelTest extends TestCase
         $model = new ValidModel();
         $errors = $model->getErrors();
         $this->assertTrue($errors->isEmpty());
+    }
+
+    public function testValidateDoesNotThrowAValidationException()
+    {
+        $model = new ValidModel();
+        $this->assertVoid($model->validate());
     }
 }

@@ -41,4 +41,15 @@ abstract class TestCase extends Base
             return $validator;
         });
     }
+
+    /**
+     * A simple helper so our test case expectations are a little more clear.
+     *
+     * @param mixed $value
+     *        The value that we are asserting is void.
+     */
+    protected function assertVoid($value)
+    {
+        $this->assertNull($value);
+    }
 }
