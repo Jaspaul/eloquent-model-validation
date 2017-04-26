@@ -89,7 +89,7 @@ trait Validates
      *
      * @return void
      */
-    public function validate() : void
+    public function validate()
     {
         if ($this->isInvalid()) {
             throw new ValidationException($this->getValidator());
