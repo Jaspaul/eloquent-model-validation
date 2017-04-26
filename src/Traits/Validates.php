@@ -105,7 +105,7 @@ trait Validates
     public function save(array $options = [])
     {
         if ($this->isInvalid()) {
-            throw new ValidationException($this->getErrors());
+            throw new ValidationException($this->getValidator());
         }
 
         return parent::save($options);
