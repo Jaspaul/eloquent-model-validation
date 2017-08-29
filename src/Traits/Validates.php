@@ -35,13 +35,6 @@ trait Validates
     }
 
     /**
-     * The validator.
-     *
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    private $validator;
-
-    /**
      * Returns an instance of the validator from our container.
      *
      * @return \Illuminate\Validation\Factory
@@ -59,14 +52,11 @@ trait Validates
      */
     private function getValidator() : Validator
     {
-        if (is_null($this->validator)) {
-            $this->validator = $this->getValidationFactory()->make(
-                $this->getData(),
-                $this->getRules(),
-                $this->getMessages()
-            );
-        }
-        return $this->validator;
+        return $this->getValidationFactory()->make(
+            $this->getData(),
+            $this->getRules(),
+            $this->getMessages()
+        );
     }
 
     /**
@@ -123,9 +113,12 @@ trait Validates
      */
     public function getValidationFailureReasons() : array
     {
-        if ($this->isInvalid()) {
-            return $this->getValidator()->failed();
+        $validator = $this->getValidator();
+
+        if ($validator->fails()) {
+            return $validator->failed();
         }
+
         return [];
     }
 
