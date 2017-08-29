@@ -28,4 +28,11 @@ interface Validatable
      * @return \Illuminate\Contracts\Support\MessageProvider
      */
     public function getErrors() : MessageProvider;
+
+    /**
+     * Returns the reasons why the validator failed.
+     *
+     * @return array
+     */
+    public function getValidationFailureReasons() : array;
 }

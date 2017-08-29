@@ -52,4 +52,13 @@ class InvalidModelTest extends TestCase
         $model = new InvalidModel();
         $model->validate();
     }
+
+    public function testGetValidationFailureReasonsReturnsTheReasonsWhyTheValidationFailed()
+    {
+        $model = new InvalidModel();
+        $reasons = $model->getValidationFailureReasons();
+
+        $this->assertTrue(array_key_exists('email', $reasons));
+        $this->assertTrue(array_key_exists('Required', $reasons['email']));
+    }
 }

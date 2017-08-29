@@ -33,4 +33,10 @@ class ValidModelTest extends TestCase
         $model = new ValidModel();
         $this->assertVoid($model->validate());
     }
+
+    public function testGetValidationFailureReasonsReturnsAnEmptyArray()
+    {
+        $model = new ValidModel();
+        $this->assertEmpty($model->getValidationFailureReasons());
+    }
 }
