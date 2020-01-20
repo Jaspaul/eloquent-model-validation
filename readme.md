@@ -19,8 +19,9 @@ $ composer require jaspaul/eloquent-model-validation
 
 The following versions of PHP are supported by this version.
 
-* PHP 7.0
-* PHP 7.1
+* PHP 7.2
+* PHP 7.3
+* PHP 7.4
 
 ## Configuration
 
