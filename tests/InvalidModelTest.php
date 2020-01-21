@@ -38,7 +38,7 @@ class InvalidModelTest extends TestCase
 
     public function testSaveThrowsAValidationException()
     {
-    	$this->expectException(ValidationException::class);
+        $this->expectException(ValidationException::class);
 
         $model = new InvalidModel();
         $model->save();
@@ -46,7 +46,7 @@ class InvalidModelTest extends TestCase
 
     public function testValidateThrowsAValidationException()
     {
-    	$this->expectException(ValidationException::class);
+        $this->expectException(ValidationException::class);
 
         $model = new InvalidModel();
         $model->validate();
